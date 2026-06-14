@@ -10,6 +10,7 @@ const originalWorld = [
 
 let world = JSON.parse(JSON.stringify(originalWorld));
 let selectedTool = null;
+let selectedInventoryTile = null;
 
 const inventory = {
   tree: 0,
@@ -29,8 +30,7 @@ function renderWorld() {
       const tileDiv = document.createElement("div");
 
       tileDiv.classList.add("tile", tile);
-      tileDiv.dataset.row = rowIndex;
-      tileDiv.dataset.col = colIndex;
+      tileDiv.title = tile;
 
       tileDiv.addEventListener("click", () => {
         handleTileClick(rowIndex, colIndex);
@@ -46,18 +46,34 @@ function renderInventory() {
 
   for (let type in inventory) {
     const item = document.createElement("div");
+
     item.classList.add("inventory-item");
-    item.textContent = `${type}: ${inventory[type]}`;
+
+    if (selectedInventoryTile === type) {
+      item.classList.add("selected");
+    }
+
+    item.textContent = `${getEmoji(type)} ${type}: ${inventory[type]}`;
 
     item.addEventListener("click", () => {
-      selectedInventoryTile = type;
+      if (inventory[type] > 0) {
+        selectedInventoryTile = type;
+        selectedTool = null;
+        clearToolSelection();
+        renderInventory();
+      }
     });
 
     inventoryDiv.appendChild(item);
   }
 }
 
-let selectedInventoryTile = null;
+function getEmoji(type) {
+  if (type === "tree") return "🌳";
+  if (type === "dirt") return "🟫";
+  if (type === "rock") return "🪨";
+  return "";
+}
 
 function handleTileClick(row, col) {
   const tile = world[row][col];
@@ -83,8 +99,15 @@ function handleTileClick(row, col) {
 function removeTile(row, col, type) {
   world[row][col] = "sky";
   inventory[type]++;
+
   renderWorld();
   renderInventory();
+}
+
+function clearToolSelection() {
+  document.querySelectorAll("#toolbar button").forEach(btn => {
+    btn.classList.remove("selected");
+  });
 }
 
 document.querySelectorAll("#toolbar button").forEach(button => {
@@ -92,11 +115,10 @@ document.querySelectorAll("#toolbar button").forEach(button => {
     selectedTool = button.dataset.tool;
     selectedInventoryTile = null;
 
-    document.querySelectorAll("#toolbar button").forEach(btn => {
-      btn.classList.remove("selected");
-    });
-
+    clearToolSelection();
     button.classList.add("selected");
+
+    renderInventory();
   });
 });
 
@@ -110,9 +132,7 @@ resetBtn.addEventListener("click", () => {
   selectedTool = null;
   selectedInventoryTile = null;
 
-  document.querySelectorAll("#toolbar button").forEach(btn => {
-    btn.classList.remove("selected");
-  });
+  clearToolSelection();
 
   renderWorld();
   renderInventory();
