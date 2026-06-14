@@ -1,103 +1,133 @@
 body {
+  margin: 0;
   font-family: Arial, sans-serif;
   text-align: center;
+  color: white;
+  background: linear-gradient(#6ec6ff 0%, #6ec6ff 45%, #5cb85c 45%, #3e8e41 100%);
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 42px;
+  text-shadow: 3px 3px #222;
+}
+
+#toolbar {
+  background: #2b2b2b;
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  border-bottom: 5px solid #111;
+}
+
+#toolbar button,
+#resetBtn {
+  font-size: 18px;
+  padding: 12px 18px;
+  border: 3px solid #111;
+  border-radius: 6px;
+  cursor: pointer;
+  background: #c6c6c6;
+  box-shadow: inset -3px -3px #777;
+}
+
+#toolbar button.selected {
+  background: #ffe066;
+  transform: scale(1.08);
+}
+
+#world {
+  display: grid;
+  grid-template-columns: repeat(10, 48px);
+  justify-content: center;
+  margin: 25px auto;
+  border: 6px solid #2b2b2b;
+  width: fit-content;
   background: #87ceeb;
-  margin: 0;
-  padding: 20px;
+}
+
+.tile {
+  width: 48px;
+  height: 48px;
+  border: 1px solid rgba(0,0,0,0.25);
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.sky {
+  background: #7ec8ff;
+}
+
+.grass {
+  background:
+    linear-gradient(#2ecc40 0 35%, #8b5a2b 35% 100%);
+}
+
+.dirt {
+  background:
+    repeating-linear-gradient(45deg, #8b5a2b, #8b5a2b 8px, #6b3f1d 8px, #6b3f1d 16px);
+}
+
+.rock {
+  background:
+    repeating-linear-gradient(45deg, #777, #777 8px, #555 8px, #555 16px);
+}
+
+.tree {
+  background:
+    linear-gradient(to right, transparent 35%, #6b3f1d 35% 65%, transparent 65%),
+    radial-gradient(circle, #1b8f2a 55%, #0b5f1a 56%);
+}
+
+#inventory {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin: 20px;
+}
+
+.inventory-item {
+  min-width: 90px;
+  padding: 12px;
+  background: #c6c6c6;
+  color: #111;
+  border: 3px solid #111;
+  border-radius: 6px;
+  cursor: pointer;
+  box-shadow: inset -3px -3px #777;
+}
+
+.inventory-item.selected {
+  background: #ffe066;
+}
+
+#resetBtn {
+  margin-top: 10px;
 }
 
 .landing {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  background: linear-gradient(#87ceeb, #4caf50);
 }
 
 .card {
-  background: white;
-  padding: 30px;
-  border-radius: 15px;
-  max-width: 500px;
+  background: rgba(0,0,0,0.75);
+  padding: 35px;
+  border: 5px solid #444;
+  border-radius: 12px;
+  max-width: 550px;
 }
 
 .start-btn {
   display: inline-block;
-  padding: 12px 20px;
-  background: #2e7d32;
+  margin-top: 20px;
+  background: #2ecc40;
   color: white;
+  padding: 14px 24px;
   text-decoration: none;
-  border-radius: 8px;
-}
-
-#toolbar {
-  margin-bottom: 20px;
-}
-
-#toolbar button,
-#resetBtn {
-  padding: 10px 15px;
-  margin: 5px;
-  cursor: pointer;
-  border: 2px solid #333;
+  border: 3px solid #111;
   border-radius: 6px;
-  background: white;
-}
-
-#toolbar button.selected {
-  background: #ffeb3b;
-}
-
-#world {
-  display: grid;
-  grid-template-columns: repeat(10, 45px);
-  justify-content: center;
-  margin: 20px auto;
-}
-
-.tile {
-  width: 45px;
-  height: 45px;
-  border: 1px solid #555;
-  box-sizing: border-box;
-  cursor: pointer;
-}
-
-.sky {
-  background: #87ceeb;
-}
-
-.grass {
-  background: #3cb043;
-}
-
-.dirt {
-  background: #8b4513;
-}
-
-.rock {
-  background: #777;
-}
-
-.tree {
-  background: #1b5e20;
-}
-
-.empty {
-  background: #87ceeb;
-}
-
-#inventory {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin-bottom: 15px;
-}
-
-.inventory-item {
-  padding: 10px;
-  border: 2px solid #333;
-  background: white;
-  cursor: pointer;
-  border-radius: 6px;
+  font-weight: bold;
 }
