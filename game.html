@@ -1,26 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Minecraft Game</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Minecraft JS</title>
+
+<link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-  <h1>Minecraft JS</h1>
 
-  <div id="toolbar">
-    <button data-tool="axe">Axe</button>
-    <button data-tool="pickaxe">Pickaxe</button>
-    <button data-tool="shovel">Shovel</button>
-  </div>
+<header class="top-bar">
 
-  <div id="world"></div>
+<div class="logo">
+Minecraft JS
+</div>
 
-  <h2>Inventory</h2>
-  <div id="inventory"></div>
+<div id="toolbar">
 
-  <button id="resetBtn">Reset World</button>
+<button data-tool="axe">
+🪓 Axe
+</button>
 
-  <script src="script.js"></script>
+<button data-tool="pickaxe">
+⛏️ Pickaxe
+</button>
+
+<button data-tool="shovel">
+🥄 Shovel
+</button>
+
+</div>
+
+</header>
+
+
+<div class="game-wrapper">
+
+<div id="world"></div>
+
+</div>
+
+
+<h2>Inventory</h2>
+
+<div id="inventory"></div>
+
+
+<button id="resetBtn">
+Reset World
+</button>
+
+
+<script src="script.js"></script>
+
 </body>
 </html>
