@@ -1,35 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Minecraft JS</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minecraft 2D Clone</title>
+    <link rel="stylesheet" href="style.css">
 </head>
+<body>
+    <div id="landing-page">
+        <h1>Welcome to Minecraft 2D</h1>
+        <h2>How to Play:</h2>
+        <ul>
+            <li><strong>Axe:</strong> Removes Tree tiles.</li>
+            <li><strong>Pickaxe:</strong> Removes Rock tiles.</li>
+            <li><strong>Shovel:</strong> Removes Dirt tiles.</li>
+            <li>Collected tiles are stored in your inventory and can be placed back on empty spaces.</li>
+        </ul>
+        <button id="start-btn">Start Game</button>
+    </div>
 
-<body class="landing-page">
+    <div id="game-container" class="hidden">
+        
+        <div id="toolbar">
+            <button class="tool" data-tool="axe">🪓 Axe</button>
+            <button class="tool" data-tool="pickaxe">⛏️ Pickaxe</button>
+            <button class="tool" data-tool="shovel">铲 Shovel</button>
+        </div>
 
-<div class="landing-card">
-    <h1>Minecraft JS</h1>
+        <div id="world"></div>
 
-    <p>
-        Break blocks using the correct tool.
-        Collect them into your inventory.
-        Place them back into the world.
-    </p>
+        <div id="inventory-container">
+            <h3>Inventory</h3>
+            <div id="inventory"></div>
+        </div>
 
-    <h3>Tools</h3>
+        <button id="reset-btn">Reset World</button>
+    </div>
 
-    <ul>
-        <li>🪓 Axe → Trees</li>
-        <li>⛏️ Pickaxe → Rocks</li>
-        <li>🥄 Shovel → Dirt</li>
-    </ul>
-
-    <a href="game.html" class="start-btn">
-        Start Game
-    </a>
-</div>
-
+    <script src="script.js"></script>
 </body>
 </html>
