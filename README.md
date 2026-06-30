@@ -1,4 +1,4 @@
-Minecraft 2D Game Final Project
+Minecraft 2D Game  Project
 
 Open index.html in the browser.
 First you will see a Minecraft-style start screen. Click START GAME to play.
